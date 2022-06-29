@@ -57,13 +57,24 @@ li a:hover {
 	opacity: 0.6;
     cursor: pointer;
 }
+.imglink{
+	position: relative;
+  	text-align: center;
+  	color: white;
+}
 .imglink:hover .linkedin{
 	opacity: 1;
+    cursor: pointer;
 }
 .linkedin{
 	opacity: 0; 
 	font-size: 50%; 
-	color: #300868;
+	color: #FFFFFF;
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+  	transform: scale(3.0);
 }
 .description-block{
 	color: #101010;
