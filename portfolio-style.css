@@ -4,6 +4,7 @@ body{
 	font-family: "apercu",sans-serif;
 	font-size: 150%;
 	text-align: center;
+	color: white;
 }
 
 ul {
@@ -11,7 +12,7 @@ ul {
   	margin: 0;
  	padding: 0;
   	overflow: hidden;
-  	background-color: #0d295d;
+  	background-color: black;
   	position: -webkit-sticky;
   	position: sticky;
   	top: 0;
@@ -20,13 +21,13 @@ ul {
 li a {
 	float: right;
   	display: block;
-  	color: white;
+  	color: #00D100;
   	text-align: center;
   	padding: 14px 16px;
   	text-decoration: none;
 }
 li a:hover {
-	color: #00D100;
+	color: white;
 }
 .active {
   	float: left;
@@ -44,10 +45,9 @@ li a:hover {
 }
 .minititle{
 	color: #00D100;
-	background-color: #002395;
 }
 .container-fluid{
-	background-color: #729beb;
+	background-color: #020202;
 }
 .profile-top{
 	font-size: 200%;
@@ -56,14 +56,19 @@ li a:hover {
 }
 #bioCarousel{
 	margin: 50px;
+	height: 75%;
+	width: 75%;
 }
 #profile-pic{
   	transition: .5s ease;
 	margin: 20px;
-	border: 4px solid #131F85;
+	border: 4px solid transparent;
 	border-radius: 50%;
-	height: 85%;
-	width: 85%;
+	height: 82%;
+	width: 82%;
+}
+#profile-pic:hover {
+	border: 4px solid green;
 }
 .linkedin{
 	opacity: 0; 
@@ -76,12 +81,12 @@ li a:hover {
   	transform: scale(3.0);
 }
 .description-block{
-	color: #101010;
+	color: white;
 	align-self: center;
 }
 
 #gameb{
-	border: 4px solid #df9c34;
+	border: 4px solid green;
 }
 .text{
 	text-align: left;
@@ -99,7 +104,6 @@ li a:hover {
 #instapic{
 	height: 100%;
 	width: 100%;
-	border: 8px solid #131F85;
 }
 .resume{
 	padding-top: 1%;
@@ -108,13 +112,17 @@ li a:hover {
 .titletext{
 	font-size: 150%;
 	color: white;
-	background-color: #131F85;
 	padding: .4%;
 }
 .spacepadding{
 	padding-bottom: 1%;
 }
+#Contact{
+	background-color: #101010;
+}
 footer{
 	font-size: 50%;
 	color: white;
+	background-color: #101010;
+
 }
