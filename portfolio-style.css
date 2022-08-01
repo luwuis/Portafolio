@@ -9,7 +9,6 @@ body{
 ul {
   	list-style-type: none;
   	margin: 0;
-  	margin-left: ;
  	padding: 0;
   	overflow: hidden;
   	background-color: #0d295d;
@@ -27,7 +26,7 @@ li a {
   	text-decoration: none;
 }
 li a:hover {
-	color: #96F0B6;
+	color: #00D100;
 }
 .active {
   	float: left;
@@ -36,9 +35,16 @@ li a:hover {
 	color: white;
   	background-color: green;
 }
+.active span {
+	animation:blinking 2s infinite;}
+@keyframes blinking{
+	0%{  color: white; }
+	60%{ color: white; }
+	100%{  color:transparent; }
+}
 .minititle{
-	color: #F46EBE;
-	background-color: #131F85;
+	color: #00D100;
+	background-color: #002395;
 }
 .container-fluid{
 	background-color: #729beb;
@@ -48,13 +54,16 @@ li a:hover {
 	font-family: 'Futura';
 
 }
+#bioCarousel{
+	margin: 50px;
+}
 #profile-pic{
   	transition: .5s ease;
-	margin-top:20px;
+	margin: 20px;
 	border: 4px solid #131F85;
 	border-radius: 50%;
-	height: 200px;
-	width: 200px;
+	height: 85%;
+	width: 85%;
 }
 .linkedin{
 	opacity: 0; 
@@ -68,7 +77,9 @@ li a:hover {
 }
 .description-block{
 	color: #101010;
+	align-self: center;
 }
+
 #gameb{
 	border: 4px solid #df9c34;
 }
