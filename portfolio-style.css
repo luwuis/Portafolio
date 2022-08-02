@@ -29,15 +29,20 @@ li a {
 li a:hover {
 	color: white;
 }
-.active {
+.mainTitle {
   	float: left;
 }
-.active:hover{
+.mainTitle:hover{
 	color: white;
   	background-color: green;
 }
-.active span {
-	animation:blinking 2s infinite;}
+.mainTitle span {
+	animation:blinking 2s infinite;
+}
+.active {
+	color: black;
+	background-color: #00D100;
+}
 @keyframes blinking{
 	0%{  color: white; }
 	60%{ color: white; }
@@ -64,8 +69,8 @@ li a:hover {
 	margin: 20px;
 	border: 4px solid transparent;
 	border-radius: 50%;
-	height: 82%;
-	width: 82%;
+	height: 80%;
+	width: 80%;
 }
 #profile-pic:hover {
 	border: 4px solid green;
