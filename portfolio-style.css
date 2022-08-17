@@ -6,7 +6,6 @@ body{
 	text-align: center;
 	color: white;
 }
-
 ul {
   	list-style-type: none;
   	margin: 0;
@@ -28,6 +27,11 @@ li a {
 }
 li a:hover {
 	color: white;
+}
+.highlight-word{
+	background: rgba(350,350,350,0.6);
+	font-style: oblique;
+	color: black;
 }
 .mainTitle {
   	float: left;
@@ -59,6 +63,24 @@ li a:hover {
 	font-family: 'Futura';
 
 }
+.highlight:hover {
+	width: 100%;
+}
+.highlight {
+  	align-self: center;
+  	display: inline-block;
+  	position: absolute;
+  	background-color: #00D100;
+  	height: 40px; 
+  	width: 0%;
+  	transition: width 0.5s;
+  	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.highlight span {
+	align-self: center;
+	width: 100%;
+}
+
 #bioCarousel{
 	margin: 50px;
 	height: 75%;
