@@ -11,6 +11,8 @@ EMAIL: luisespinocervantes@gmail.com
 
 <link href="css/proj1.css" rel="stylesheet">
 
+
+
 <!-- Useful 3rd party libraries -->
 <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
 <script type="text/javascript" src="js/glMatrix-0.9.5.js"></script>
@@ -200,108 +202,9 @@ EMAIL: luisespinocervantes@gmail.com
         <canvas id="canvas0" style="border:none;" width="600" height="800"></canvas>
     </div>
     <div style="margin-left:10px; float:left">
-        <!--
-        <div class="panel">
-            <p>Rendering Control</p>
-            
-            <table>
-                <tr>
-                    <td width="200px">Resolution</td>
-                    <td width="230px">
-                        <select onchange="changeResolution(this);">
-                            <option value="0">480x640</option>
-                            <option value="1" selected="selected">600x800</option>
-                            <option value="2">720x960</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Drawing Mode</td>
-                    <td>
-                        <select onchange="changeMode(this.value);">
-                            <option value="0" selected="selected">Normal</option>
-                            <option value="1">Wire-frame</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" onchange="changeRotatingState(this.checked);">Rotating object</td>
-                    <td><input type="checkbox"checked="checked" onchange="renderfalingcube(this.checked);">renderfallingcube</td>
-                    <td>
-                        <input id="sliderBar" type="range" min="1" max="36" value="6" onchange="updateSlider(this.value);" disabled>
-                        (<span id="sliderAmount">60</span>&deg;/s)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" onchange="changeAnimatedLightState(this.checked);">Rotating light</td>
-                    <td>
-                        <input id="sliderBarLight" type="range" min="1" max="36" value="6" onchange="updateSliderLight(this.value);" disabled>
-                        (<span id="sliderAmountLight">60</span>&deg;/s)
-                    </td>
-                </tr>
-            </table>
-        
-        </div>
-        <div style="clear:left"></div>-->
         <div class="panel">
             <p>Camera Controls</p>
             <table>
-                <!--
-                <tr>
-                    <td width="200px">Mesh Resolution</td>
-                    <td width="230px">
-                        <select onchange="changeMeshResolution(this.value);">
-                            <option value="1">15x15</option>
-                            <option value="2">25x25</option>
-                            <option value="3"selected="selected">35x35</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <input type="checkbox" onchange="changeAnimatedState(this.checked);" checked>Animated
-                    </td>
-                    <td>
-                        <button type="botton" onclick="resetMesh();">Restart</button>
-                        &nbsp;
-                        <button type="botton" onclick="window.location.reload();">Reset parameters</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Particle Mass</td>
-                    <td>
-                        <input type="range" min="1" max="50" value="50" onchange="updateSliderMass(this.value);">
-                        (<span id="sliderAmountMass">1.0</span>)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Structural Stiffness</td>
-                    <td>
-                        <input type="range" min="1" max="50" value="44" onchange="updateSliderK0(this.value);">
-                        (<span id="sliderAmountK0">44</span>&times;10<sup>3</sup>)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Shear Stiffness</td>
-                    <td>
-                        <input type="range" min="1" max="50" value="10" onchange="updateSliderK1(this.value);">
-                        (<span id="sliderAmountK1">10</span>&times;10<sup>3</sup>)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Bend Stiffness</td>
-                    <td>
-                        <input type="range" min="1" max="50" value="50" onchange="updateSliderK2(this.value);">
-                        (<span id="sliderAmountK2">50</span>&times;10<sup>3</sup>)
-                    </td>
-                </tr>
-                <tr>
-                    <td>Damping</td>
-                    <td>
-                        <input type="range" min="0" max="10" value="10" onchange="updateSliderCd(this.value);">
-                        (<span id="sliderAmountCd">0.5</span>)
-                    </td>
-                </tr>-->
                 <tr>
                     <td>(left) -- -- (right)</td>
                     <td>

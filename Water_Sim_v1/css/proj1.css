@@ -4,11 +4,8 @@ body, p, table {
 }
 
 div.panel {
-	margin-top: 10px;
-	padding: 5px;
 	border: 2px solid #666;
 	background: #eee;
-	float: left;
 }
 
 div.panel p {
