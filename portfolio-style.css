@@ -186,8 +186,9 @@ div.panel hr {
     background: #333;
     margin: 0 0 10px 0;
 }
-
-
+div.img{
+	align-self: center;
+}
 #canvas0{
 	border: 4px solid green;
 }
