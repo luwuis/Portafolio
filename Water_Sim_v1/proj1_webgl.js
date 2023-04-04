@@ -520,9 +520,3 @@ function render_meshes(water,inv){
     }
 
 }
-
-
-
-
-
-

@@ -37,7 +37,7 @@ def mygradient(image):
     yfil = [[-1, 0],
             [1, 0]]
     xfil = [[-1, 1],
-            [0, 0]]
+            [0, 0]] 
     
     dy = ndimage.correlate(image, yfil, mode = 'nearest')
     dx = ndimage.correlate(image, xfil, mode = 'nearest')
