@@ -1,0 +1,10 @@
+#water-canvas{
+	max-height:775px; 
+	aspect-ratio: 1/1; 
+	margin: auto;
+	border: 4px solid green;
+	height: -webkit-fill-available;
+	width: -webkit-fill-available;
+	max-height: 620px;
+	max-width: 620px;
+}

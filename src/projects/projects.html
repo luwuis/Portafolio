@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<!--
+WRITTEN BY: Luis Espino
+EMAIL: luisespinocervantes@gmail.com
+-->
+
+<head>
+  <meta name="author" content="Luis Espino">
+  <meta name="description" content="Project Menu of the portfolio">
+
+  <!-- Bootstrap -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../../css/portfolio-style.css">
+  <link rel="stylesheet" href="./projects-style.css">
+
+  <title>Portfolio's Project Menu</title>
+  <link rel="icon" type="image/x-icon" href="../images/logo.jpg">
+
+  <script>
+    function page_not_found() {
+      alert("Oops! I am still working on setting up this page.");
+    }
+  </script>
+</head>
+
+<body>
+  <ul>
+    <li><a href="#" class="mainTitle">LuisEspino@projects: ~$ <span>█</span></a></li>
+    <li><a href="https://www.linkedin.com/in/luis-espino-cervantes/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 21 21"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></a></li>
+    <li><a href="#Contact">Contact Me!</a></li>
+    <li><a target="_blank" href="../resources/Luis_Espino - Resume.pdf">Resume</a></li>
+    <li><a href="#" class="active">Projects</a></li>
+    <li><a href="../bio.html">Bio</a></li>
+    <li><a href="../../index.html">Home</a></li>
+  </ul>
+
+  <main>
+    <div class="container-fluid">
+      <!-- Modals -->
+      <div class="modal fade" id="videogame_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Vaccine Dash (Videogame)</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <figure class="figure">
+                <img src="./images/Vaccine-Dash.png" class="figure-img img-fluid rounded" alt="Picture level 2 map in Vaccine Dash" width=100% height=100%>
+                <figcaption class="figure-caption text-center">Level 2 in Vaccine Dash</figcaption>
+              </figure>
+              <p>Welcome to Vaccine Dash, a thrilling single-player adventure game set in a pandemic-stricken hospital! My team and I developed this game as part of a Game Design course, and I contributed to the source code using <strong>Scratch</strong> block code language. My main focus was on creating the levels and artwork of the game, game controls, and producing the in-game sound score. I also wrote the game's main story to enhance player engagement.<br><a href="https://crystalleesf.github.io/cs113-vaccine-dash/" target="_blank">Website</a>
+              </p>
+
+              <p>Using <strong>Canva and Pixlr</strong>, I sketched out the game environment, and for each level, I made sure to add obstacles and horror-mystery aesthetics to increase the difficulty and thrill of the game. I worked on optimizing game mechanics and sensory elements to enhance player experience and presented the game in a mock product pitch, highlighting its key features and potential for marketability. Get ready for an adrenaline-pumping ride through Vaccine Dash!<br><a href="../resources/VD-Design-Doc.pdf" target="_blank">Design document</a>
+              </p>
+
+              <a type="button" class="btn btn-primary" target="_blank" href="./Vaccine-Dash.html">Play Now!</a>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="water_sim_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Water Simulator (WebGL)</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <video width="100%" height="100%" controls autoplay>
+                <source src="./images/water-sim.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <p>My latest project is an interactive animation that mimics the movement of a serene water pool, where 3D objects seamlessly interact with the water. To increase realism, I added visual effects such as <strong>Blinn-Phong lighting, reflection, and fresnel effect.</strong> I conducted thorough research on water behavior and implemented similar movements in <strong>WebGL</strong> to ensure accuracy. The simulation has basic physics collision for an added touch of authenticity. The simulation is now accessible for public interaction. Come and take a dip into the water!</p>
+              <a type="button" href="./water-sim/water-sim.html" class="btn btn-primary">Dive In!</a>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="image_recognition_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Image Recognition</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <figure class="figure">
+                <img src="./images/faces_detected.JPG" class="figure-img img-fluid rounded" alt="face detection" style="max-height: 300px;">
+                <figcaption class="figure-caption text-center">Face Detection</figcaption>
+              </figure>
+              <p>This AI algorithm that uses positive and negative picture samples to learn and create an object's Histogram of Gradient Orientations, enabling the identification of objects in images. Using <strong>Python, Matplotlib, and Numpy</strong> libraries, I composed the software on a Jupyter notebook, achieving a <strong>95%</strong> success rate in recognizing specific objects in pictures.</p>
+              <figure class="figure">
+                <img src="./images/template face.JPG" class="figure-img img-fluid rounded" alt="histogram of gradient orientations face detection" width=200 height=200>
+                <img src="./images/template sign.JPG" class="figure-img img-fluid rounded" alt="histogram of gradient orientations traffic sign detection" width=200 height=200>
+                <figcaption class="figure-caption text-center">Histogram of Gradient Orientations</figcaption>
+              </figure>
+              <p>The algorithm collects the histogram of gradient orientations on an object image database to build the templates. It analyzes the images by detecting patterns in the rate of change of color, identifying edges and constructing a template from them. The algorithm then compares the input image and identifies the objects that match the template.</p>
+              <figure class="figure">
+                <img src="./images/sign_detected.JPG" class="figure-img img-fluid rounded" alt="Traffic Sign Detection" style="max-height: 300px;">
+                <figcaption class="figure-caption text-center">Traffic Sign Detection.</figcaption>
+              </figure>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="tinder-map_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Tinder Map (App)</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <figure class="figure">
+                <img src="./images/tinder-map-prototype.png" class="figure-img img-fluid rounded" alt="picture of a prototype app called 'tinder map'" style="max-height: 600px;" class="tmimag">
+                <figcaption class="figure-caption text-center">Tinder Map Prototype</figcaption>
+              </figure>
+              <p>Tinder Map is a location-based app prototype designed and developed by me, aimed at helping users easily find nearby places. The app presents users with a picture and description of nearby places, allowing them to swipe right to save for later or swipe left to discard. This intuitive swiping system streamlines the process of searching for nearby places, saving users valuable time and effort. I created the app prototype using the Marvel App website, ensuring a smooth and user-friendly experience. With Tinder Map, finding new places to explore has never been easier!
+              </p>
+              <a type="button" href="https://marvelapp.com/prototype/79j1bj2" target="_blank" class="btn btn-primary">Prototype</a><br>
+
+              <figure class="figure">
+                <img src="./images/QR-tindermap.PNG" alt="QR code to open Tinder Map's prototye on a phone">
+                <figcaption class="figure-caption text-center">Try it on your Phone!</figcaption>
+              </figure>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="zotfeeds_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Zotfeeds (App)</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <figure class="figure">
+                <img src="./images/zotfeeds-home.png" class="figure-img img-fluid rounded" alt="picture of a prototype app called 'ZotFeeds'" style="max-height:600px" class="tmimag">
+                <figcaption class="figure-caption text-center">ZotFeeds Prototype</figcaption>
+              </figure>
+              <p>ZotFeeds is a group project app prototype that I contributed to as a pseudo-code writer and database designer. The app connects food donors, such as restaurants or supermarkets, to drivers who can pick up the food and deliver it to food banks that are requesting donations. By facilitating the process of food donation, ZotFeeds provides a much-needed solution to help reduce food waste and help those in need.</p>
+              <figure class="figure">
+                <img src="./images/zotfeeds-Database-Arch.png" style="max-height:600px;" class="figure-img img-fluid rounded" alt="picture of ZotFeeds Database Architecture" class="tmimag">
+                <figcaption class="figure-caption text-center">ZotFeeds Database Architecture</figcaption>
+              </figure>
+              
+              <p>The app's user-friendly design includes an easy-to-use interface for food donors, drivers, and food banks to communicate and coordinate donations efficiently. I collaborated with the team to develop the app's features, and my role involved creating the pseudocode for the app and designing the database to ensure optimal performance. The ZotFeeds app demonstrates how technology can be utilized to make a positive impact on society.</p>
+              <a class="btn btn-primary" target="_blank" href="../resources/Zotfeeds-DesignDoc.pdf" role="button">Full Design</a>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="spotify_browser_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Spotify Browser (Website)</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <figure class="figure">
+                <img src="./images/spotify-browser.png" class="figure-img img-fluid rounded" alt="picture of the Spotify Browser Website" class="tmimag">
+                <figcaption class="figure-caption text-center">Spotify Browser Artist Page</figcaption>
+              </figure>
+              
+              <p>A real-time music search website that enables users to browse their favorite artists, albums, and tracks on Spotify. Utilizing <strong>Angular and Node.js/Express</strong>, I built a dynamic and engaging interface that communicates with the Spotify <strong>API</strong> and presents users with visually stunning and responsive search results.</p>
+
+              <a type="button" onclick="page_not_found()" class="btn btn-primary">Search Now!</a>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!--               <img src="./images/water-sim.gif">
+
+      <div class="modal fade" id="videogame_modal" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              
+              <h4 class="modal-title">Modal Header</h4>
+
+              <button type="button" class="close" data-dismiss="modal" style="color: var(--main-color);">&times;</button>
+            </div>
+            <div class="modal-body">
+              <p>This is a large modal.</p>
+
+              <div id="testCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#testCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#testCarousel" data-slide-to="1"></li>
+                  <li data-target="#testCarousel" data-slide-to="2"></li>
+                </ol> 
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img class="d-100 w-100" src="../images/Grad_Profile.jpg" alt="Picture of Luis Espino with UCI graduation stole">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5><span class="highlight-word">Luis Espino</span></h5>
+                      <p><span class="highlight-word">UCI Class of 2022</span></p>
+                    </div>
+
+                  </div>
+                  <div class="carousel-item">
+                    <img class="d-100 w-100" src="../images/car_img1.jpg" alt="Grad picture of Luis Espino under a tree">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5><span class="highlight-word">Luis Espino</span></h5>
+                      <p><span class="highlight-word">UCI Class of 2022</span></p>
+                    </div>
+                  </div>
+
+                  <div class="carousel-item">
+                    <img class="d-100 w-100" src="../images/car_img2.JPG" alt="Picture of Luis Espino with red tie">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5><span class="highlight-word">Luis Espino</span></h5>
+                      <p><span class="highlight-word">UCI Class of 2022</span></p>
+                    </div>
+                  </div>
+
+                </div>
+                <a class="carousel-control-prev" href="#testCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#testCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal" style="color: var(--main-color);">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    -->
+
+      <!-- Project Menu -->
+
+      <h2>Project Menu</h2>
+      <p>
+        <em>Indulge in Exquisite Delights</em>
+      </p>
+      <div class="row">
+
+        <!-- coins -->
+
+        <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/intro_water-sim.jpg" alt="Water Simulator sample image" data-toggle="modal" data-target="#water_sim_modal">
+            <div class="caption">
+              <p>Water Simulator (WebGL)</p>
+            </div> 
+          </div>
+        </div>
+
+         <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/intro_faces_detected.jpg" alt="Image Recognition sample image" data-toggle="modal" data-target="#image_recognition_modal">
+            <div class="caption">
+              <p>Image Recognition</p>
+            </div> 
+          </div>
+        </div>
+
+
+        <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/spotify-browser-intro.png" alt="Spotify Browser sample image" data-toggle="modal" data-target="#spotify_browser_modal">
+            <div class="caption">
+              <p>Spotify Browser (Website)</p>
+            </div> 
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/intro_videogame.png" alt="Vaccine Dash (Videogame) sample image" data-toggle="modal" data-target="#videogame_modal">
+            <div class="caption">
+              <p>Vaccine Dash (Videogame)</p>
+            </div> 
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/tinder-map.jpg" alt="Tinder Map sample image" data-toggle="modal" data-target="#tinder-map_modal">
+            <div class="caption">
+              <p>Tinder Map (App)</p>
+            </div> 
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="thumbnail">
+            <img class="img-fluid" src="./images/zotfeeds.png" alt="Zotfeeds sample image" data-toggle="modal" data-target="#zotfeeds_modal">
+            <div class="caption">
+              <p>Zotfeeds (App)</p>
+            </div> 
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+  <footer>
+    <div id="Contact">
+      <div class="titletext"><strong>Contact Info</strong></div>
+      <a href = "mailto: luispinocervantes@gmail.com">luispinocervantes@gmail.com</a>
+      <br>+1 (650) 465-9992
+      <br><a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/luis-espino-cervantes/" role="button"><strong>Linked</strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 18 18"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></a> 
+    </div>
+    © Copyright 2022 Espino Cervantes
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>

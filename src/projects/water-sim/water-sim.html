@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<!--
+WRITTEN BY: Luis Espino
+EMAIL: luisespinocervantes@gmail.com
+-->
+
+<head>
+  <meta name="author" content="Luis Espino">
+  <meta name="description" content="Water Simulator Page">
+
+  <!-- Bootstrap -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
+  <link rel="stylesheet" href="../../../css/portfolio-style.css">
+  <link rel="stylesheet" href="./water-sim.css">
+
+  <title>Water Simulator</title>
+  <link rel="icon" type="image/x-icon" href="../../images/logo.jpg">
+
+  <!-- Webgl shaders -->
+
+  <!-- Useful 3rd party libraries -->
+  <script type="text/javascript" src="Water_Sim_v1/js/jquery-1.12.2.min.js"></script>
+  <script type="text/javascript" src="Water_Sim_v1/js/glMatrix-0.9.5.js"></script>
+
+  <!-- Shader initialization utils -->
+  <script type="text/javascript" src="Water_Sim_v1/js/shader-utils.js"></script>
+
+  <!-- WebGL debugging utils -->
+  <script type="text/javascript" src="Water_Sim_v1/js/webgl-debug.js"></script>
+  <script type="text/javascript" src="Water_Sim_v1/js/debug-utils.js"></script>
+
+  <!-- Simulation-related functions -->
+  <script type="text/javascript" src="Water_Sim_v1/proj1_sim.js"></script>
+
+  <!-- WebGL functions -->
+  <script type="text/javascript" src="Water_Sim_v1/proj1_webgl.js"></script>
+
+  <!-- Other javascript functions -->
+  <script type="text/javascript" src="Water_Sim_v1/proj1.js"></script>
+
+  <!-- Vertex shader (water) -->
+  <script id="shader-vs" type="x-shader/x-vertex">
+      uniform mat4 uMVMatrix;             // Model-view matrix
+      uniform mat4 uPMatrix;              // Projection matrix
+      uniform mat4 uNMatrix;              // Normal matrix
+
+      //attribute vec2 a_texcoord;
+      attribute vec3 aVertexPosition;     // Vertex position in object space
+      attribute vec3 aVertexNormal;       // Vertex normal in object space
+
+      varying vec3 vPosition;             // Vertex position (camera space)
+      varying vec3 vNormal;               // Vertex normal (camera space)
+
+      varying vec4 pixelpos;            
+
+      void main(void) {
+          vec4 camSpacePosition = uMVMatrix * vec4(aVertexPosition, 1.0);
+          vPosition = vec3(camSpacePosition);
+
+          gl_Position = uPMatrix * camSpacePosition;
+          pixelpos = gl_Position;
+
+          vec4 camSpaceNormal = uNMatrix * vec4(aVertexNormal, 0.0);
+          vNormal = vec3(camSpaceNormal);
+      }
+  </script>
+
+  <!-- Fragment shader (water) -->
+  <script id="shader-fs" type="x-shader/x-fragment">
+      precision mediump float;
+
+      uniform vec2 buffersize;            // Size of screen
+      uniform vec3 uLightPos;             // Light position in camera space
+      varying vec3 vPosition;             // Fragment position (camera space)
+      varying vec3 vNormal;               // Fragment normal (camera space)
+
+
+      uniform sampler2D reflexionTexture;
+      uniform sampler2D refractionTexture;
+
+      varying vec4 pixelpos;
+
+      void main(void) {
+          vec2 screenpix = (pixelpos.xy / pixelpos.w) * 0.5 + 0.5;
+
+          float yy = 1.0 - screenpix.y;
+          float xx = 1.0 - screenpix.x;
+
+          // reflexion and refraction
+          vec2 refractTexCoords = vec2(screenpix.x, screenpix.y);
+          vec2 reflexTexCoords = vec2(xx, yy);
+
+          vec4 ReflexionColor = texture2D(reflexionTexture, reflexTexCoords);
+          vec4 RefractionColor = texture2D(refractionTexture, refractTexCoords);
+
+          // Blinn-Phong
+          vec3 vLight = uLightPos - vPosition;
+          float dist = length(vLight);
+          vLight = vLight/dist;
+
+          vec3 vView = normalize(-vPosition);
+          vec3 vHalf = normalize(vView + vLight);
+          vec3 vNormal_ = normalize(vNormal); 
+          if ( dot(vNormal_, vView) < 0.0 ) vNormal_ = -vNormal_;
+
+          vec3 diffClr = vec3(0.2392, 0.5216, 0.7765); // color of obj
+          float ambient = 0.2;
+
+          float diff = max(dot(vNormal_, vLight), 0.0);
+          float spec = pow(max(dot(vNormal_, vHalf), 0.0), 10.0);
+          vec3 I = 5.0*(diffClr*diff + spec)/(5.0 + 0.2*dist*dist) + diffClr*ambient;
+          
+          vec4 pho = vec4(I, 1.0);
+          
+          // Fresnel
+          float fresnel = dot(vView,vNormal_);
+          fresnel = pow(fresnel, 0.55); // I incresed the factor for a better effect
+
+          vec4 fresnelColor = mix(RefractionColor,ReflexionColor, fresnel);
+          gl_FragColor = mix(fresnelColor, pho, 0.3);
+          //gl_FragColor = RefractionColor;
+          gl_FragColor = mix(ReflexionColor,pho, fresnel); 
+
+
+      }
+  </script>
+  <!-- Vertex shader (Blinn-Phong) -->
+  <script id="sceneShader-vs" type="x-shader/x-vertex">
+      uniform mat4 uMVMatrix;             // Model-view matrix
+      uniform mat4 uPMatrix;              // Projection matrix
+      uniform mat4 uNMatrix;              // Normal matrix
+
+      attribute vec3 aVertexPosition;     // Vertex position in object space
+      attribute vec3 aVertexNormal;       // Vertex normal in object space
+
+      varying vec3 vPosition;             // Vertex position (camera space)
+      varying vec3 vNormal;               // Vertex normal (camera space)
+      varying vec4 worldPosition;
+      varying vec4 pixelpos;
+
+
+      void main(void) {
+          worldPosition = vec4(aVertexPosition, 1.0);
+          vec4 camSpacePosition = uMVMatrix * vec4(aVertexPosition, 1.0);
+          vPosition = vec3(camSpacePosition);
+
+          gl_Position = uPMatrix * camSpacePosition;
+          pixelpos = gl_Position;
+          vec4 camSpaceNormal = uNMatrix * vec4(aVertexNormal, 0.0);
+          vNormal = vec3(camSpaceNormal);
+      }
+  </script>
+
+  <!-- Fragment shader (Blinn-Phong) -->
+  <script id="sceneShader-fs" type="x-shader/x-fragment">
+      precision mediump float;
+
+      uniform vec3 uLightPos;             // Light position in camera space
+      varying vec3 vPosition;             // Fragment position (camera space)
+      varying vec3 vNormal;               // Fragment normal (camera space)
+      varying vec4 worldPosition;
+      varying vec4 pixelpos;
+
+      uniform vec4 clipPlane;             // plane for above/below water
+
+      void main(void) {
+
+
+          vec2 screenpix = (pixelpos.xy / pixelpos.w) /2.0 + 0.5;
+
+          vec2 refractTexCoords = vec2(screenpix.x, screenpix.y);
+          vec2 reflectTexCoords = vec2(screenpix.x, -screenpix.y );
+
+          // clip fragment passing water
+          if (dot(worldPosition, clipPlane) < 0.0) {
+              discard;
+          }
+
+          vec3 vLight = uLightPos - vPosition;
+          float dist = length(vLight);
+          vLight = vLight/dist;
+
+          vec3 vView = normalize(-vPosition);
+          vec3 vHalf = normalize(vView + vLight);
+          vec3 vNormal_ = normalize(vNormal);
+          if ( dot(vNormal_, vView) < 0.0 ) vNormal_ = -vNormal_;
+
+          vec3 diffClr = vec3(0.0, 0.5, 0.5); // color of obj
+          float ambient = 0.2;
+
+          float diff = max(dot(vNormal_, vLight), 0.0);
+          float spec = pow(max(dot(vNormal_, vHalf), 0.0), 10.0);
+          vec3 I = 5.0*(diffClr*diff + spec)/(5.0 + 0.2*dist*dist) + diffClr*ambient;
+          
+          gl_FragColor = vec4(I, 1.0);
+      }
+  </script>
+</head>
+
+
+<body>
+  <ul>
+    <li><a href="#" class="mainTitle">LuisEspino@Water-Simulator: ~$ <span>█</span></a></li>
+    <li><a href="https://www.linkedin.com/in/luis-espino-cervantes/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 21 21"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></a></li>
+    <li><a href="#Contact">Contact Me!</a></li>
+    <li><a target="_blank" href="../../resources/Luis_Espino - Resume.pdf">Resume</a></li>
+    <li><a href="../projects.html">Projects</a></li>
+    <li><a href="../../bio.html">Bio</a></li>
+    <li><a href="../../../index.html">Home</a></li>
+  </ul>
+
+  <main class="container-fluid">
+    <!-- Water Sim-->
+    <div class="col-12" ><strong class="minititle">Water Simulator</strong></div>
+    <div class="row">
+      <div class="col-md-12 col-lg-6">
+        <canvas id="water-canvas" height="600" width="600"></canvas>
+      </div>
+      <div class="col-md-12 col-lg-6">
+        <div class="panel">
+          <p>Camera Controls</p>
+          <table>
+              <tr>
+                  <td>(left) -- -- (right)</td>
+                  <td>
+                      <input type="range" min="0" max="640" value="0" onchange="updateSlidery(this.value);">
+                  </td>
+              </tr>
+              <tr>
+                  <td>(down) -- -- (up)</td>
+                  <td>
+                      <input type="range" min="25" max="120" value="25" onchange="updateSliderx(this.value);">
+                      
+                  </td>
+              </tr>
+          </table>
+          <table>
+              <p>Animation Settings</p>
+              <tr>
+                  <td>
+                      <input type="checkbox" onchange="changeAnimatedState(this.checked);" checked>Animated
+                  </td>
+                  <td>
+                      <button type="botton" onclick="resetMesh();">Restart</button>
+                      &nbsp;
+                  </td>
+              </tr>
+              <tr>
+                  <td><input type="checkbox" onchange="changeAnimatedLightState(this.checked);">Rotating light</td>
+                  <td>
+                      <input id="sliderBarLight" type="range" min="1" max="36" value="6" onchange="updateSliderLight(this.value);" disabled>
+                      (<span id="sliderAmountLight">60</span>&deg;/s)
+                  </td>
+              </tr>
+
+          </table>
+          <p>Click the screen to move the water!!</p>
+        </div>
+      </div>
+    </div>
+    
+
+  </main>
+  <footer>
+    <div id="Contact">
+      <div class="titletext"><strong>Contact Info</strong></div>
+      <a href = "mailto: luispinocervantes@gmail.com">luispinocervantes@gmail.com</a>
+      <br>+1 (650) 465-9992
+      <br><a class="btn btn-primary" target="_blank" href="https://www.linkedin.com/in/luis-espino-cervantes/" role="button"><strong>Linked</strong><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 18 18"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/></svg></a> 
+    </div>
+    © Copyright 2022 Espino Cervantes
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+
+
+</html>

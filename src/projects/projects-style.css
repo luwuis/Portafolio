@@ -1,0 +1,93 @@
+/*
+
+
+.followers-well {
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: inherit;
+	width: inherit;
+}
+
+.perspective-container {
+	perspective: 800px;
+}
+
+
+.innercard{
+	border: 5px solid transparent;
+	border-radius: 50%;
+	transition: .75s ease;
+	height: 300px;
+	width: 300px;
+}
+.innercard:hover{
+	box-shadow: 0 0 140px 10px rgba(0,209,0,.5);
+}
+*/
+
+/* mouse follower thingy
+.thumbnail {
+	color: #007bff;
+	transition: .75s ease;
+}
+.thumbnail:hover {
+	color: var(--main-color);
+	cursor: pointer;
+}
+.thumbnail:hover img{
+	box-shadow: 0 0 40px 5px rgba(0,209,0,.5);
+	border-color: var(--main-color);
+}
+.follower {
+	background-color: transparent;
+	position: relative;
+	margin: auto;
+}
+.follower img{
+	background-size: cover;
+	border: 5px solid #007bff;
+	transition: .75s ease;
+	position: relative;
+	max-height: 400px;
+}
+
+*/
+
+.thumbnail {
+	color: var(--main-color);
+	transition: .75s ease;
+	margin: 2rem;
+}
+.thumbnail:hover {
+	transform: scale(1.05);
+}
+.thumbnail:hover img{
+	box-shadow: 0 0 100px 10px rgba(0,209,0,.5);
+	border-color: var(--main-color);
+	cursor: pointer;
+}
+
+
+.thumbnail img{
+	background-size: cover;
+	border-radius: 50%;
+	aspect-ratio: 1 / 1;
+	border: 5px solid var(--dark-main);
+	transition: .75s ease;
+	position: relative;
+	max-height: 400px;
+}
+.thumbnail .caption{
+	transition: .75s ease;
+	color: #007bff;
+}
+.thumbnail:hover .caption{
+	color: var(--main-color);
+}
+
+.modal-content{
+	background-color: var(--footer-color);
+	border-radius: 10px;
+}
