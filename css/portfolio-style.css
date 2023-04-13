@@ -58,7 +58,7 @@ ul {
 	background-color: black;
 	position: sticky;
 	top: 0;
-	z-index:5000;
+	z-index:30;
 }
 li a {
 	float: right;
@@ -116,7 +116,6 @@ li a:hover {
 	margin: 20px;
   transition: .75s ease;
 	/*border: 5px solid var(--dark-main);*/
-	z-index:-5000;
 	border-radius: 50%;
 	height: 80%;
 	width: 80%;
