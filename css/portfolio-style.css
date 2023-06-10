@@ -40,13 +40,50 @@ footer{
 	background-color: var(--footer-color);
 }
 #Contact{
-	background-color: var(--footer-color);
+	padding: 2rem;
 	font-size: 200%;
 	overflow: hidden;
 }
 figure{
 	margin: 1rem;
 }
+
+
+#contact-form{
+	padding: 2rem;
+}
+
+
+#inner-contact {
+	margin: auto;
+	align-self: center;
+	position: relative;
+	background-color: var(--dark-main);
+	border-radius: 1rem;
+	width: 100%;
+	height: auto;
+	font-size: 200%;
+}
+#inner-contact strong {
+	margin: auto;
+}
+
+#inner-contact form {
+	padding: 1rem;
+}
+#inner-contact input {
+	width: 100%;
+	height: 2rem;
+}
+#inner-contact textarea {
+	width: 100%;
+	height: 3rem;
+}
+#inner-contact input {
+	width: 100%;
+	height: 2rem;
+}
+
 
 
 /* navbar */
