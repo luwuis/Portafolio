@@ -5,7 +5,11 @@
   --footer-color: #101010;
 }
 .btn-primary{
-	transition: 0.2s linear;  	
+	background-color: var(--footer-color);
+	transition: 0.2s linear;  
+	width: 100%;	
+	margin-top: 2%;
+
 }
 .btn-primary:hover{
 	background-color: var(--main-color);
@@ -64,25 +68,14 @@ figure{
 	height: auto;
 	font-size: 200%;
 }
-#inner-contact strong {
-	margin: auto;
-}
 
 #inner-contact form {
-	padding: 1rem;
-}
-#inner-contact input {
+	padding: 0.5rem;
+	text-align: left;
+	justify-content: flex-end;
 	width: 100%;
-	height: 2rem;
 }
-#inner-contact textarea {
-	width: 100%;
-	height: 3rem;
-}
-#inner-contact input {
-	width: 100%;
-	height: 2rem;
-}
+
 
 
 
