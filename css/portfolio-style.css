@@ -75,7 +75,9 @@ figure{
 	justify-content: flex-end;
 	width: 100%;
 }
-
+#form-id {
+	align-content: flex-end;
+}
 
 
 
