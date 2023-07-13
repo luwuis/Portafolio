@@ -134,10 +134,16 @@ li a:hover {
 	height: 75%;
 	width: 75%;
 }
-.highlight-word{
-	background: rgba(350,350,350,0.6);
+#bioCarousel .highlight-word{
 	font-style: oblique;
-	color: black;
+	color: white;
+}
+#bioCarousel li {
+	display: none;
+}
+
+.carousel-caption {
+  background:rgba(0,0,0,.6);
 }
 
 /* home */
