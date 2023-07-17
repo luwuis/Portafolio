@@ -6,14 +6,18 @@
 }
 .btn-primary{
 	background-color: var(--footer-color);
-	transition: 0.2s linear;  
 	width: 100%;	
 	margin-top: 2%;
-
 }
 .btn-primary:hover{
 	background-color: var(--main-color);
 	border-color: var(--main-color);
+}
+svg {
+	vertical-align: sub;
+}
+svg path {
+	transition: 0s linear; 
 }
 body{
 	background: var(--background-color);
@@ -21,11 +25,11 @@ body{
 	font-size: 150%;
 	text-align: center;
 	color: white;
+	padding-top: 4rem;
 }
 a{
+	transition: .2s linear; 
 	text-decoration: none;
-	transition: 0.5s linear;
-
 }
 a:hover{
 	text-decoration: none;
@@ -51,13 +55,14 @@ footer{
 figure{
 	margin: 1rem;
 }
+strong:hover {
+	color: var(--main-color);
+}
 
-
+/*Contact info*/
 #contact-form{
 	padding: 2rem;
 }
-
-
 #inner-contact {
 	margin: auto;
 	align-self: center;
@@ -68,7 +73,6 @@ figure{
 	height: auto;
 	font-size: 200%;
 }
-
 #inner-contact form {
 	padding: 0.5rem;
 	text-align: left;
@@ -80,55 +84,77 @@ figure{
 }
 
 
-
-/* navbar */
+/* navbar Menu */
+#nav-Menu {
+	padding: 0;
+	background-color: black;
+}
+#mainTitle {
+	float: left;
+	font-weight: 550;
+	color: var(--main-color);
+	padding: 14px;
+	font-size: 100%;
+	margin-right: 0;
+}
+#mainTitle:hover {
+	color: white;
+  background-color: var(--main-color);
+}
+#mainTitle span {
+	animation:blinking 2s infinite;
+}
 ul {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	background-color: black;
 	position: sticky;
 	top: 0;
 	z-index:50;
-}
-li a {
-	float: right;
-	display: block;
-	color: var(--main-color);
-	text-align: center;
-	padding: 14px 16px;
-	text-decoration: none;
-	transition: 0.2s linear;  	
 }
 li a:hover {
 	color: white;
 	background: var(--main-color);
 	text-decoration: none;
 }
-.mainTitle {
-	float: left;
-	font-weight: 550;
-}
-.mainTitle:hover{
-	color: white;
-  background-color: var(--main-color);
-}
-.mainTitle span {
-	animation:blinking 2s infinite;
-}
-.active {
+.active .nav-link{
 	color: black;
 	background-color: var(--main-color);
 }
-@keyframes blinking{
+.active .nav-link:hover{
+	color: white;
+}
+.nav-link {
+	color: var(--main-color);
+	float: right;
+	display: block;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	width: 100%;
+}
+
+
+@keyframes blinking {
 	0%{  color: white; }
 	60%{ color: white; }
 	100%{  color:transparent; }
 }
+#menu-toggle {
+	margin-right: 14px;
+	padding: 0.25rem;
+}
+
+#menu-toggle span {
+	color: var(--main-color);
+}
+#menu-toggle span:hover{
+	color: white;
+}
+
 
 /* bio */
-
 #bioCarousel{
 	margin: 50px;
 	height: 75%;
@@ -141,13 +167,47 @@ li a:hover {
 #bioCarousel li {
 	display: none;
 }
-
 .carousel-caption {
-  background:rgba(0,0,0,.6);
+	bottom: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+	font-size: large;
+}
+.carousel-item:after {
+  content:"";
+  position:absolute;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background:linear-gradient(to bottom, rgba(0,0,0,0) 61%, rgba(0,0,0,0.75) 81.5%);
 }
 
-/* home */
+/*Styles for window width up to 505px */
+@media (max-width: 499px) {
+	.carousel-caption {
+		display: none;
+	}
+	.carousel-item:after {
+		display: none;
+  }
+}
+/*Styles for window width between 768px and 990px*/
+@media (min-width: 768px) and (max-width: 990px) {
+	.carousel-caption {
+		font-size: xx-large;
+	}
+}
+/*Styles for window width greater than 1200px*/
+@media (min-width: 1200px) {
+	.carousel-caption {
+		font-size: x-large;
+	}
+}
 
+
+
+/* home */
 #profile-pic{
 	/*background-image: url(https://media.giphy.com/media/ohONS2y8GTDoI/giphy.gif);*/
 	position: relative;
@@ -178,7 +238,6 @@ li a:hover {
 	100% {
 		transform: rotateY(0deg);
 		box-shadow: 0px 0px 0px 4px var(--main-color);
-
 	}
 }
 @keyframes spin {
@@ -209,8 +268,9 @@ li a:hover {
 	font-family: 'Futura';
 }
 
-/* projects */
 
+
+/* projects */
 .minititle{
 	color: var(--main-color);
 }
@@ -287,37 +347,3 @@ div.panel hr {
 div.img{
 	align-self: center;
 }
-
-
-
-/* trash
-.highlight:hover {
-	width: 100%;
-}
-.highlight {
-  	align-self: center;
-  	display: inline-block;
-  	position: absolute;
-  	background-color: var(--main-color);
-  	height: 40px; 
-  	width: 0%;
-  	transition: width 0.5s;
-  	transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-.highlight span {
-	align-self: center;
-	width: 100%;
-}
-
-.linkedin{
-	opacity: 0; 
-	font-size: 50%; 
-	color: #FFFFFF;
-	position: absolute;
-  	top: 50%;
-  	left: 50%;
-  	transform: translate(-50%, -50%);
-  	transform: scale(3.0);
-}
-*/
-
