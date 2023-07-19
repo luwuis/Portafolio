@@ -25,11 +25,10 @@ body{
 	font-size: 150%;
 	text-align: center;
 	color: white;
-	padding-top: 4rem;
+	padding-top: 64px;
 }
 a{
 	transition: .2s linear; 
-	text-decoration: none;
 }
 a:hover{
 	text-decoration: none;
@@ -58,6 +57,12 @@ figure{
 strong:hover {
 	color: var(--main-color);
 }
+.section:target {
+    padding-top: 3rem;
+    visibility: hidden;
+    display: block;
+}
+
 
 /*Contact info*/
 #contact-form{
@@ -104,16 +109,7 @@ strong:hover {
 #mainTitle span {
 	animation:blinking 2s infinite;
 }
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	position: sticky;
-	top: 0;
-	z-index:50;
-}
-li a:hover {
+.nav-item a:hover {
 	color: white;
 	background: var(--main-color);
 	text-decoration: none;
@@ -134,6 +130,28 @@ li a:hover {
 	text-decoration: none;
 	width: 100%;
 }
+.dropdown-menu{
+	background-color: var(--footer-color);
+}
+.dropdown-item {
+	color: var(--dark-main);
+}
+.nav-item .active{
+	background-color: var(--main-color);
+	color: white;
+}
+.dropdown-menu {
+	border-radius: 0;
+}
+/*only show dropdown on desktop*/
+@media (min-width: 992px) {
+	.dropdown-menu {margin-top: 64px;}
+	.nav-item:hover .dropdown-menu{ display: block; }
+}
+@media (max-width: 991.99px) {
+	.nav-item .dropdown-menu{ display: block; }
+}
+
 
 
 @keyframes blinking {
