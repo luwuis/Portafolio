@@ -134,11 +134,14 @@ strong:hover {
 	background-color: var(--footer-color);
 }
 .dropdown-item {
-	color: var(--dark-main);
+	color: var(--main-color);
 }
 .nav-item .active{
 	background-color: var(--main-color);
+}
+.nav-item .active .dropdown-item {
 	color: white;
+
 }
 .dropdown-menu {
 	border-radius: 0;
