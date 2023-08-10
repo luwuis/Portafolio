@@ -19,13 +19,27 @@ EMAIL: contact@luisweb.site
   <link rel="icon" type="image/x-icon" href="./src/images/logo.jpg">
 
 
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    // Close the navbar when a link is clicked
     $(document).ready(function() {
       $("#nav-Menu a").click(function() {
-        // Close the navbar when a link is clicked
         $("#navbarCollapse").collapse('hide');
+      });
+    });
+
+
+    // Smooth scrolling for anchor links
+    $(document).ready(function() {
+      $('a[href^="#"]').on('click', function(event) {
+          event.preventDefault();
+          
+          var target = $(this.getAttribute('href'));
+          if (target.length) {
+              $('html, body').animate({
+                  scrollTop: target.offset().top - 50
+              }, 1000); // Adjust the duration as needed
+          }
       });
     });
   </script>
